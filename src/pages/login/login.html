@@ -6,7 +6,7 @@ Ionic pages and navigation.
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="yellow">
     <ion-title>LoginPage</ion-title>
   </ion-navbar>
 
@@ -15,7 +15,7 @@ Ionic pages and navigation.
 
 <ion-content padding>
 
-  <img src="assets/img/logo.jpg"  alt="Logo" class="logo"  />
+  <img src="assets/img/logo.jpg"  alt="Logo"  />
 
   <ion-card>
 
@@ -31,8 +31,11 @@ Ionic pages and navigation.
       </ion-item>
     </ion-card-content>
     <ion-row>
-      <button ion-button (click)="navigateToPage('RegisterPage')">Register</button>
-      <button ion-button>Login</button>
+      <div>
+        <button ion-button (click)="navigateToPage('RegisterPage')" color="secondary">Register</button>
+        <button ion-button >Login</button>
+      </div>
+
     </ion-row>
 
   </ion-card>
