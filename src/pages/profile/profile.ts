@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import{InboxPage} from "../inbox/inbox";
-
 /**
- * Generated class for the RegisterPage page.
+ * Generated class for the ProfilePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,19 +10,16 @@ import{InboxPage} from "../inbox/inbox";
 
 @IonicPage()
 @Component({
-  selector: 'page-register',
-  templateUrl: 'register.html',
+  selector: 'page-profile',
+  templateUrl: 'profile.html',
 })
-export class RegisterPage {
+export class ProfilePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-  navigateToPage(pageName:string){
-    this.navCtrl.push(pageName);
-  }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
+    console.log('ionViewDidLoad ProfilePage');
   }
 
 }
