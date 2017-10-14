@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import {InboxPage} from "../inbox/inbox";
+
 /**
 This is the page we enter after the login
  */
@@ -11,12 +13,13 @@ This is the page we enter after the login
   templateUrl: 'tabs.html',
 })
 export class TabsPage {
- tab1Root: string;
+ tab1Root: any;
  tab2Root:string;
  tab3Root:string;
+
  constructor(){
-   this.tab1Root='InboxPage';
-   this.tab2Root='ChannelsPage';
+   this.tab1Root= InboxPage; //alternative way of loading the page . This needs an import
+   this.tab2Root='ChannelsPage';// when using lazy loading like this by passing things as strings the performance of our application increases. Becuase the channels gets loaded when the user asks for it 
    this.tab3Root='ProfilePage';
 
  }

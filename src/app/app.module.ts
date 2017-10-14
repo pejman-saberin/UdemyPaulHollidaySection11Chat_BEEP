@@ -7,11 +7,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 
+import { InboxPage } from '../pages/inbox/inbox';  //since we are not doing lazy loading it has to be imported in the app module
+
 
 @NgModule({
   declarations: [
     MyApp,
     LoginPage,
+    InboxPage
   ],
   imports: [
     BrowserModule,
@@ -20,7 +23,8 @@ import { LoginPage } from '../pages/login/login';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage,    
+    LoginPage,
+    InboxPage
   ],
   providers: [
     StatusBar,
