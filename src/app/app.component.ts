@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 
-import { LoginPage } from '../pages/login/login';
+//import { LoginPage } from '../pages/login/login';//doing lazy loading
 
 
 
@@ -12,7 +12,7 @@ import { LoginPage } from '../pages/login/login';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = LoginPage;
+  rootPage:string = 'LoginPage';  //doing lazy loading
 
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {

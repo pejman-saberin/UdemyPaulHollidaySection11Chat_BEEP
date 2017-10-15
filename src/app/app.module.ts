@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { LoginPage } from '../pages/login/login';
+//import { LoginPage } from '../pages/login/login';
 
 import { InboxPage } from '../pages/inbox/inbox';  //since we are not doing lazy loading it has to be imported in the app module
 
@@ -13,7 +13,7 @@ import { InboxPage } from '../pages/inbox/inbox';  //since we are not doing lazy
 @NgModule({
   declarations: [
     MyApp,
-    LoginPage,
+    //LoginPage,
     InboxPage
   ],
   imports: [
@@ -23,7 +23,7 @@ import { InboxPage } from '../pages/inbox/inbox';  //since we are not doing lazy
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage,
+  //LoginPage,
     InboxPage
   ],
   providers: [
