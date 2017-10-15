@@ -13,7 +13,7 @@ import { InboxPage } from '../pages/inbox/inbox';  //since we are not doing lazy
 @NgModule({
   declarations: [
     MyApp,
-    //LoginPage,
+    //LoginPage,//doing lazy loading
     InboxPage
   ],
   imports: [
@@ -23,7 +23,7 @@ import { InboxPage } from '../pages/inbox/inbox';  //since we are not doing lazy
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-  //LoginPage,
+  //LoginPage,//doing lazy loading
     InboxPage
   ],
   providers: [

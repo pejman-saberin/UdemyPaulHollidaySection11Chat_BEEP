@@ -10,9 +10,7 @@ export class RegisterPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-  navigateToPage(pageName:string){
-    this.navCtrl.push(pageName);
-  }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
