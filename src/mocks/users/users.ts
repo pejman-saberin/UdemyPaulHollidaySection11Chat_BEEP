@@ -3,25 +3,25 @@ import {User} from '../../models/user/user';
 const userList:User[]=[
   {
     firstName:'Paul',
-    lastname:'Holiday',
+    lastName:'Holiday',
     email: 'paul@paul.com',
     avatar: 'assets/img/avatar.png',
   },
   {
     firstName:'John',
-    lastname:'Doe',
+    lastName:'Doe',
     email: 'John@Doe.com',
     avatar: 'assets/img/avatar.png',
   },
   {
     firstName:'Sarah',
-    lastname:'Smith',
+    lastName:'Smith',
     email: 'Sarah@Smith.com',
     avatar: 'assets/img/avatar.png',
   },
   {
     firstName:'Roger',
-    lastname:'Raynold',
+    lastName:'Raynold',
     email: 'Roger@Raynold.com',
     avatar: 'assets/img/avatar.png',
   },
