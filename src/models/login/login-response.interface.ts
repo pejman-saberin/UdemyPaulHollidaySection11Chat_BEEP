@@ -1,4 +1,4 @@
-export interface LoginReponse{
+export interface LoginResponse{
   result? :{// the result is optional hence ?/
     email?:string; // ? makes the field is optional
     uid?:string;

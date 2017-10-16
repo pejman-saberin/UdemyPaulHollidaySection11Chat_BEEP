@@ -12,8 +12,7 @@ import {ComponentsModule} from '../../components/components.module'
   ],
   imports: [
     IonicPageModule.forChild(LoginPage),
-    ComponentsModule,
-    AngularFireAuthModule
+    ComponentsModule,  
   ],
 })
 export class LoginPageModule {}

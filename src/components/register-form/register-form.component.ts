@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {AngularFireAuth} from 'angularfire2/auth';
-import {ToastController} from 'ionic-angular';
+import {ToastController,NavController} from 'ionic-angular';
 
 import {Account} from '../../models/account/account.interface';
 
@@ -20,7 +20,9 @@ export class RegisterFormComponent {
 
   account={} as Account;  //when we use 'as' we are saying this account variable is of type acocunt
 
-  constructor(private afAuth:AngularFireAuth,private toast:ToastController) {  }
+  constructor(private afAuth:AngularFireAuth,
+              private toast:ToastController,
+              private navCtrl:NavController) {  }
 
 
   async Register(){
@@ -31,6 +33,7 @@ export class RegisterFormComponent {
         message:"Account succsefully created!",
         duration:3000
       }).present();
+      this.navCtrl.setRoot('ProfilePage');
     }
     catch(e){
       console.error(e);

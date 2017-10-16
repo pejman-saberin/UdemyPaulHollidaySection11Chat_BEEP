@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {IonicPage,NavController,ToastController} from 'ionic-angular';
 
-import {LoginReponse} from '../../models/login/login-response.interface';
+import {LoginResponse} from '../../models/login/login-response.interface';
 
 /**
  * Generated class for the LoginPage page.
@@ -20,7 +20,7 @@ export class LoginPage {
   constructor(private navCtrl: NavController, private toast: ToastController) {
   }
 
-  login(event: LoginReponse){
+  login(event: LoginResponse){
     console.log(event);
     if(!event.error){
       this.toast.create({
