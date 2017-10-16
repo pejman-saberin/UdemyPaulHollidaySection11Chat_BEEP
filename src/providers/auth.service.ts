@@ -18,7 +18,7 @@ export class AuthService{
     console.log('Hello AuthProvider Provider');
   }
 
-  async signWithEmailandPassword(account:Account){
+  async signInWithEmailandPassword(account:Account){
     try{
       return <LoginResponse> {
         result: await this.auth.auth.signInWithEmailAndPassword(account.email,account.password),
