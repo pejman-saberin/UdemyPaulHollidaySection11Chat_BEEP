@@ -17,6 +17,11 @@ export class AuthService{
   constructor(private auth: AngularFireAuth) {
     console.log('Hello AuthProvider Provider');
   }
+  
+  getAuthenticatedUser(){ // this return an observable of type firebase user
+    return this.auth.authState;
+  }
+  
   //this is for register
   async createUserWithEmailAndPassword(account){
     try{
@@ -32,7 +37,8 @@ export class AuthService{
       }
     }
   }
-
+  
+   //this is for the Login
   async signInWithEmailandPassword(account:Account){
     try{
       return <LoginResponse> {

@@ -8,10 +8,12 @@ import {AngularFireModule} from 'angularfire2';
 import { MyApp } from './app.component';
 //import { LoginPage } from '../pages/login/login';
 import { AngularFireAuthModule} from 'angularfire2/auth';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
 
 import { InboxPage } from '../pages/inbox/inbox';  //since we are not doing lazy loading it has to be imported in the app module
 import {FIREBASE_CONFIG} from './app.firebase.config';
 import { AuthService } from '../providers/auth.service';
+import { DataService } from '../providers/data.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { AuthService } from '../providers/auth.service';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -35,7 +38,8 @@ import { AuthService } from '../providers/auth.service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthService
+    AuthService,
+     DataService
   ]
 })
 export class AppModule {}
