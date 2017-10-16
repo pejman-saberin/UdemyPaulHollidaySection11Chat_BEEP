@@ -21,6 +21,7 @@ export class RegisterPage {
           message: `Acccont created: ${event.result.email}`,
           duration: 3000
         }).present();
+        this.navCtrl.setRoot('EditProfilePage');
       }
       else{
         this.toast.create({

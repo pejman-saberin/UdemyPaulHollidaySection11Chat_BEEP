@@ -36,7 +36,10 @@ export class RegisterFormComponent {
       }).present();
       this.navCtrl.setRoot('ProfilePage');*/
     }
-    catch(e){/*
+    catch(e){
+      console.error(e);
+      this.registerStatus.emit(e);
+      /*
       console.error(e);
       this.toast.create({
         message:e.message,
