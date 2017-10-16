@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
-import {AngularFireAuth} from 'angularfire2/auth';
-import {ToastController,NavController} from 'ionic-angular';
+import { Component, Output,EventEmitter } from '@angular/core';
 
 import {Account} from '../../models/account/account.interface';
-
+import {AuthService} from '../../providers/auth.service';
+import {LoginResponse  } from '../../models/login/login-response.interface';
 
 
 /**
@@ -20,27 +19,29 @@ export class RegisterFormComponent {
 
   account={} as Account;  //when we use 'as' we are saying this account variable is of type acocunt
 
-  constructor(private afAuth:AngularFireAuth,
-              private toast:ToastController,
-              private navCtrl:NavController) {  }
+  @Output()registerStatus: EventEmitter<LoginResponse>;
 
+  constructor(private auth: AuthService){
+    this.registerStatus=new EventEmitter<LoginResponse>();
+  }
 
   async Register(){
     try{
       const result= await
-      this.afAuth.auth.createUserWithEmailAndPassword(this.account.email,this.account.password);
-      this.toast.create({
+      this.auth.createUserWithEmailAndPassword(this.account);
+      this.registerStatus.emit(result);
+      /*this.toast.create({
         message:"Account succsefully created!",
         duration:3000
       }).present();
-      this.navCtrl.setRoot('ProfilePage');
+      this.navCtrl.setRoot('ProfilePage');*/
     }
-    catch(e){
+    catch(e){/*
       console.error(e);
       this.toast.create({
         message:e.message,
         duration:3000
-      }).present();
+      }).present();*/
     }
 
   }
