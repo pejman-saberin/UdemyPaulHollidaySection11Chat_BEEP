@@ -37,7 +37,7 @@ export class EditProfileFormComponent implements OnDestroy{
   }
   
   ngOnDestroy():void {
-    this.authenticatedUSer$.unsunscribe();
+    this.authenticatedUSer$.unsubscribe();
   }
   
 
