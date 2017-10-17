@@ -1,20 +1,31 @@
-<ion-card>
-
-  <ion-card-content>
-    <ion-item>
-      <ion-label floating>Email Address</ion-label>
-      <ion-input  [(ngModel)]="account.email" type="email"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input [(ngModel)]="account.password" type="password"></ion-input>
-    </ion-item>
-
-  </ion-card-content>
-  <ion-row class="register-form__buttons">
-    <button ion-button (click)="Register()">Register</button> <!--in the video he changes the navigateToPage register() and imeplements later-->
-
-  </ion-row>
-
-</ion-card>
+<form #registerForm="ngForm" novalidate>
+  <ion-card>
+  
+      <ion-card-content>
+        <ion-item>
+          <ion-label floating>Email Address</ion-label>
+          <ion-input  [(ngModel)]="account.email" type="email" name="email" #email="ngModel" #email="ngModel" 
+          required ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/"></ion-input>  <!--Attach a correct pattern later. Had difficulties get dot to work-->
+        </ion-item>
+        
+        <div padding *ngIf="email.invalid && email.dirty">
+          <span class="global__input-error">Email address is not valid.</span>
+        </div>
+    
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input [(ngModel)]="account.password" type="password" name="password" #password="ngModel" required ng-pattern="[a-zA-Z0-9!@#$%^&*]{6,20}$"></ion-input>  <!-- Password must have 6 to 20 characters: Which firebase already checks for it. Need to make this stronger-->
+        </ion-item>
+        
+         <div padding *ngIf="password.invalid && password.dirty">
+          <span class="global__input-error">Password must have 6 to 20 characters</span>
+        </div>
+    
+      </ion-card-content>
+    <ion-row class="register-form__buttons">
+      <button ion-button (click)="Register()" [disabled]="registerForm.invalid">Register</button> <!--in the video he changes the navigateToPage register() and imeplements later-->
+  
+    </ion-row>
+  
+  </ion-card>
+</form>

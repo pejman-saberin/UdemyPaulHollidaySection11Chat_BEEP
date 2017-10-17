@@ -4,11 +4,11 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import {AngularFireModule} from 'angularfire2';
-
 import { MyApp } from './app.component';
 //import { LoginPage } from '../pages/login/login';
 import { AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database-deprecated';
+import {FormsModule} from "@angular/forms";
 
 import { InboxPage } from '../pages/inbox/inbox';  //since we are not doing lazy loading it has to be imported in the app module
 import {FIREBASE_CONFIG} from './app.firebase.config';
@@ -26,7 +26,8 @@ import { DataService } from '../providers/data.service';
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    FormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
