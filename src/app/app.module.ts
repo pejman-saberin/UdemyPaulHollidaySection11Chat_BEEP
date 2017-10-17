@@ -8,7 +8,7 @@ import {AngularFireModule} from 'angularfire2';
 import { MyApp } from './app.component';
 //import { LoginPage } from '../pages/login/login';
 import { AngularFireAuthModule} from 'angularfire2/auth';
-import {AngularFireDatabaseModule} from 'angularfire2/database';
+import {AngularFireDatabaseModule} from 'angularfire2/database-deprecated';
 
 import { InboxPage } from '../pages/inbox/inbox';  //since we are not doing lazy loading it has to be imported in the app module
 import {FIREBASE_CONFIG} from './app.firebase.config';
@@ -39,7 +39,7 @@ import { DataService } from '../providers/data.service';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
-     DataService
+    DataService
   ]
 })
 export class AppModule {}

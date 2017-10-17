@@ -20,6 +20,12 @@ export class EditProfilePage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  saveProfileResult(event: Boolean){
+    console.log("we are inside the page component and below you see the value of the event");
+    console.log(event);
+    event? this.navCtrl.setRoot('TabsPage'): console.log("Not authenticated or saved");   //this event is emiited from the child component in the component folder for redirection. if profile is saved, we are redirecting
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditProfilePage');
   }

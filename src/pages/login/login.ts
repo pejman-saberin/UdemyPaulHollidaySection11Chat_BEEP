@@ -29,9 +29,9 @@ export class LoginPage {
         message: `Welcome to Beep, ${event.result.email}`,
         duration:3000
       }).present();
-      this.data.getProfile(<User>event.result).subscribe(profile=>{
+      this.data.getProfile(<User>event.result).subscribe(profile=>{  //type casting <User>event.result
         console.log(profile);
-        profile.val()? this.navCtrl.setRoot('TabsPage'): this.navCtrl.setRoot('EditProfilePage');  //.val() comes from the preserveSnapshot that is a firebase method
+        profile.val() ? this.navCtrl.setRoot('TabsPage'): this.navCtrl.setRoot('EditProfilePage');  //.val() comes from the preserveSnapshot that is a firebase method
       })
     }
     else{
