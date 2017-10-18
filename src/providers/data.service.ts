@@ -17,6 +17,17 @@ export class DataService {
     console.log('Hello DataProvider Provider');
   }
 
+  searchUser(firstName:string){
+    const query=this.database.list('/profile',{ //anything that user puts in as firstName, will get queries as firstName
+      query:{
+        orderByChild: 'firstName',
+        equalTo:firstName
+      }
+    })
+
+    return query.take(1);// it will return the first one. If you want all you just pass in the observable itself
+  }
+
   getProfile(user:User){
     this.profileObject=this.database.object(`/profile/${user.uid}`,{preserveSnapshot:true});  //preserveSnapshot is a firebase method that provides us with the data
     return this.profileObject.take(1);
