@@ -1,4 +1,4 @@
-import { Component , OnDestroy, Output, EventEmitter} from '@angular/core'; //OnDestroy is used for unsunscribe if we leave the page
+import { Component , OnDestroy, Output, EventEmitter,Input,OnInit} from '@angular/core'; //OnDestroy is used for unsunscribe if we leave the page
 import {Subscription} from 'rxjs/Subscription'; //everytime we deal with obserables we have to make sure we subscribe when we finish
 import {User} from 'firebase/app';
 
@@ -16,7 +16,7 @@ import {AuthService} from '../../providers/auth.service';
   selector: 'app-edit-profile-form',
   templateUrl: 'edit-profile-form.component.html'
 })
-export class EditProfileFormComponent implements OnDestroy{
+export class EditProfileFormComponent implements OnDestroy,OnInit{
 
   private authenticatedUSer$: Subscription;  //$ is simply a naming convention to anything that is obervable.
   private authenticatedUSer: User; //this is what we get back from authenticated user
@@ -25,7 +25,13 @@ export class EditProfileFormComponent implements OnDestroy{
  //input used to pass data from parent and child, output used to pass data from chuld to parent. To pass data between pages you use navparams
  //Passing data from child to parent using Output and evenemtters is how you create custom events
   @Output () saveProfileResult:EventEmitter<Boolean>;
-  profile={} as Profile;
+  @Input() profile={} as Profile;  //it is an input  here because we are reciving it from the parent page to edit the profile again
+
+  ngOnInit():void{
+    if (!this.profile){
+      this.profile={} as Profile;  //this is used from the line above   @Input() profile={} as Profile;  .. if the inputs are not received yet then set the profile as an empty arrray
+    }
+  }
 
 
   constructor(private auth: AuthService, private data: DataService) {
