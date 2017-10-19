@@ -2,7 +2,7 @@
 
 
 <ion-list *ngIf="profileList?.length>0"> <!--don't forget the question mark-->
-    <ion-item *ngFor="let profile of profileList">
+    <ion-item *ngFor="let profile of profileList" (click)="selectProfile(profile)">
         <ion-avatar item-left>
             <img src="assets/img/avatar.png" alt="Avatar">
         </ion-avatar>
