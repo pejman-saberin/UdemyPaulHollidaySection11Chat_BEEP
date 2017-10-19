@@ -5,6 +5,9 @@ import { FirebaseObjectObservable,AngularFireDatabase } from "angularfire2/datab
 import {User} from 'firebase/app';
 import {Profile} from  '../models/profile/profile.interface';
 import "rxjs/add/operator/take";
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/mergeMap";
+import {AuthService} from "./auth.service"
 
 //get and save data from different nodes in the database
 
@@ -13,7 +16,7 @@ export class DataService {
 
   profileObject: FirebaseObjectObservable <Profile>
 
-  constructor(private database: AngularFireDatabase) {
+  constructor(private database: AngularFireDatabase, private auth:AuthService) {
     console.log('Hello DataProvider Provider');
   }
 
@@ -44,6 +47,12 @@ export class DataService {
       console.error(e);
       return false;
     }
+  }
+  
+  getAuthenticatedUserProfile(){
+    return this.auth.getAuthenticatedUser.map(user=> user.uid)
+    .mergeMap(authId=>this.database.object(`/profiles/${user.uid}`)) //this returns authenticated user profile for that person  //Combining Observables with mergeMap. it is just a shoterway to get the authenticated userprofile
+    .take(1)
   }
 
 }
