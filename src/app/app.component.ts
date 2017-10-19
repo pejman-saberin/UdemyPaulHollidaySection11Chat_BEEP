@@ -21,7 +21,7 @@ export class MyApp {
     this.auth.getAuthenticatedUser().subscribe(auth=>{//if the user is already logged in, send them to the tabs page, this will work if the user closes their browsers as well.
       !auth?
         this.rootPage='LoginPage':
-        this.rootPage='TabsPage';
+        this.rootPage='MessagePage';
 
     })
 
