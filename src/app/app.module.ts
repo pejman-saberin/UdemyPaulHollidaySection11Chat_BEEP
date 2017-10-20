@@ -14,6 +14,7 @@ import { InboxPage } from '../pages/inbox/inbox';  //since we are not doing lazy
 import {FIREBASE_CONFIG} from './app.firebase.config';
 import { AuthService } from '../providers/auth.service';
 import { DataService } from '../providers/data.service';
+import {ChatService} from "../providers/chat.service";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { DataService } from '../providers/data.service';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
-    DataService
+    DataService,
+    ChatService
   ]
 })
 export class AppModule {}
