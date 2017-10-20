@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,AlertController} from 'ionic-angular';
 import {ChatService} from "../../providers/chat.service";
+import {Channel} from "../../models/channel/channel.interface";
+import {Observable} from "rxjs/Observable";
+
 
 /**
- * Generated class for the ChannelsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+* Generated class for the ChannelsPage page.
+*
+* See https://ionicframework.com/docs/components/#navigation for more info on
+* Ionic pages and navigation.
+*/
 
 @IonicPage()
 @Component({
@@ -16,24 +19,26 @@ import {ChatService} from "../../providers/chat.service";
 })
 export class ChannelsPage {
 
+   channelList: Observable<Channel[]>
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private chat:ChatService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChannelsPage');
   }
-  
+
   showAddChannelDialog(){
     this.alertCtrl.create({
-        title: 'Channel Name',
-        inputs:[{
-          name: 'channelName'
-        }],
-        buttons:[
+      title: 'Channel Name',
+      inputs:[{
+        name: 'channelName'
+      }],
+      buttons:[
         {
           text: 'Cancel',
           role: 'cancel'
-          
+
         },
         {
           text: 'Add',
@@ -43,7 +48,16 @@ export class ChannelsPage {
         }
       ]
     }).present();
-    
+
+  }
+  ionViewWillLoad(){
+    //Get Channel
+    this.getChannels();
+  }
+
+
+  getChannels(){
+    this.channelList=this.chat.getChannelListRef() //this returns a firebase list observable
   }
 
 }
