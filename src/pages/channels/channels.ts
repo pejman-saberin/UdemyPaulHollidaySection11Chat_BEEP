@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams,AlertController} from 'ionic-angula
 import {ChatService} from "../../providers/chat.service";
 import {Channel} from "../../models/channel/channel.interface";
 import {Observable} from "rxjs/Observable";
+import { FirebaseListObservable } from "angularfire2/database-deprecated";
+
 
 
 /**
@@ -19,7 +21,8 @@ import {Observable} from "rxjs/Observable";
 })
 export class ChannelsPage {
 
-   channelList: Observable<Channel[]>
+   //channelList: Observable<Channel[]>
+   channelList: FirebaseListObservable<Channel[]>
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private chat:ChatService) {
   }
@@ -55,9 +58,14 @@ export class ChannelsPage {
     this.getChannels();
   }
 
+  selectChannel(channel:Channel){
+    console.log(channel);
+    this.navCtrl.push('ChannelChatPage',{channel});
+  }
+
 
   getChannels(){
-    this.channelList=this.chat.getChannelListRef() //this returns a firebase list observable
+    this.channelList=this.chat.getChannelListRef();//this returns a firebase list observable
   }
 
 }
