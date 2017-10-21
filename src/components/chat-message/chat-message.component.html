@@ -1,4 +1,4 @@
-<ion-item no-lines  class="chat-message__message-right" *ngIf="chatMessage.userToId=== userId"; else from >     <!--<ion-item *ngIf="chatIndex % 2 ===0; else right" > when using  chatIndex % 2 ===0 checks for even and odd rows-->
+<ion-item no-lines  class="chat-message__message-right" *ngIf="chatMessage.userToId=== userId; else from" >     <!--<ion-item *ngIf="chatIndex % 2 ===0; else right" > when using  chatIndex % 2 ===0 checks for even and odd rows-->
   <ion-avatar item-right>
     <img src="assets/img/avatar.png" alt="" />
   </ion-avatar>

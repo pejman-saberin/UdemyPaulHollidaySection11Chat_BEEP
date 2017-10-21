@@ -6,6 +6,7 @@ import {MESSAGE_LIST} from '../../mocks/messages/messages';
 import {AuthService} from "../../providers/auth.service";
 import {DataService} from "../../providers/data.service";
 import {ChatService} from "../../providers/chat.service";
+import {Observable} from 'rxjs/Observable';
 
 
 /**
@@ -25,7 +26,7 @@ export class MessagePage {
   selectedProfile:Profile;
   userId: string;
   userProfile: Profile;
-  messageList:Message[]
+  messageList:Observable<Message[]>
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private auth:AuthService, private data: DataService, private chat: ChatService ) {
     //this.messageList=MESSAGE_LIST;
@@ -44,6 +45,8 @@ export class MessagePage {
       this.userProfile=profile;
       this.userId=profile.$key;
     });
+
+    this.messageList=this.chat.getChats(this.selectedProfile.$key);
   }
 
   async sendMessage(content:string){
