@@ -4,10 +4,11 @@ import {USER_LIST} from "../profiles/profiles";
 const userList=USER_LIST;
 const messageList:Message[]=[];
 
+/*
 userList.forEach((user)=>{
   messageList.push({user:user, date:new Date(), lastMessage:'hello'})
   messageList.push({user:user, date:new Date(), lastMessage:'hello'})
-});
+});*/
 
 /*const messageList: Message[]=[
   {user:USER_LIST[0], date: new Date()},
