@@ -12,7 +12,7 @@ import { Component, OnInit,Output, EventEmitter} from '@angular/core';
 })
 export class SendMessageBoxComponent {
 
-  @Output() SendMessage: EventEmitter<string>
+  @Output() sendMessage: EventEmitter<string>
   content: string;
 
   text: string;
@@ -20,11 +20,11 @@ export class SendMessageBoxComponent {
   constructor() {
     console.log('Hello SendMessageBoxComponent Component');
     this.text = 'Hello World';
-    this.SendMessage=new EventEmitter<string>();
+    this.sendMessage=new EventEmitter<string>();
   }
 
   send(){
-    this.SendMessage.emit(this.content);
+    this.sendMessage.emit(this.content);   
     this.content="";
   }
 
