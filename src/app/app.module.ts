@@ -10,7 +10,7 @@ import { AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database-deprecated';
 import {FormsModule} from "@angular/forms";
 
-import { InboxPage } from '../pages/inbox/inbox';  //since we are not doing lazy loading it has to be imported in the app module
+//import { InboxPage } from '../pages/inbox/inbox';  //since we are not doing lazy loading it has to be imported in the app module
 import {FIREBASE_CONFIG} from './app.firebase.config';
 import { AuthService } from '../providers/auth.service';
 import { DataService } from '../providers/data.service';
@@ -20,7 +20,7 @@ import {ChatService} from "../providers/chat.service";
   declarations: [
     MyApp,
     //LoginPage,//doing lazy loading
-    InboxPage
+    //InboxPage doing lazy loading
   ],
   imports: [
     BrowserModule,
@@ -34,7 +34,7 @@ import {ChatService} from "../providers/chat.service";
   entryComponents: [
     MyApp,
   //LoginPage,//doing lazy loading
-    InboxPage
+  //  InboxPage//doing lazy loading
   ],
   providers: [
     StatusBar,

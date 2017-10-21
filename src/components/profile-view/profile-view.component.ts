@@ -23,14 +23,24 @@ export class ProfileViewComponent implements OnInit{
 
     ngOnInit():void{
         this.loader.present();
-        this.auth.getAuthenticatedUser().subscribe((user: User)=>{
+        //This is for video 152 that I am implementing now in video 156 since the method get getAuthenticatedUserProfile is being user.  is wasn't working when I tried in vdeo 152
+        this.data.getAuthenticatedUserProfile().subscribe(profile=>{
+          this.userProfile=profile;
+          this.loader.dismiss();
+          //console.log('this.userProfile');
+          //console.log(this.userProfile);
+        })
+        //code below works but in video 152 we are making it more clean
+      /*  this.auth.getAuthenticatedUser().subscribe((user: User)=>{
            this.data.getProfile(user).subscribe(profile=>{
             this.userProfile=<Profile>profile.val(); //get the value of the user profile
+            console.log('we are inside of profile view');
+            console.log(this.userProfile);
             this.existingProfile.emit(this.userProfile); //emit the userProfile to the user profile page. You call withing profile page by calling existingProfile
-               this.userProfile=<Profile>profile.val();
+               //this.userProfile=<Profile>profile.val();
                this.loader.dismiss();
            })
-        })
+        })*/
 
     }
     constructor(private data:DataService, private auth: AuthService, private loading: LoadingController){

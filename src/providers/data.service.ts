@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 //import {AngularFireDatabase, FirebaseObjectObservable} from 'angularfire2/database';
 //import {AngularFireDatabase} from 'angularfire2/database';
-import { FirebaseObjectObservable,AngularFireDatabase } from "angularfire2/database-deprecated";
+import { FirebaseObjectObservable,AngularFireDatabase,FirebaseListObservable } from "angularfire2/database-deprecated";
 import {User} from 'firebase/app';
 import {Profile} from  '../models/profile/profile.interface';
 import "rxjs/add/operator/take";
@@ -9,6 +9,10 @@ import 'rxjs/add/operator/map';
 import "rxjs/add/operator/mergeMap";
 import {AuthService} from "./auth.service"
 import { Observable } from 'rxjs/Observable';
+import {database} from 'firebase';
+
+
+
 
 //get and save data from different nodes in the database
 
@@ -17,7 +21,7 @@ export class DataService {
 
   profileObject: FirebaseObjectObservable <Profile>
 
-  constructor(private database: AngularFireDatabase, private auth:AuthService) {
+  constructor(private database: AngularFireDatabase, private authService:AuthService) {
     console.log('Hello DataProvider Provider');
   }
 
@@ -49,12 +53,32 @@ export class DataService {
       return false;
     }
   }
-  /*
 
+  //This is for video 152 that I am implementing now in video 156 since the method get getAuthenticatedUserProfile is being user.  is wasn't working when I tried in vdeo 152
   getAuthenticatedUserProfile(){
-    return this.auth.getAuthenticatedUser.map(user=> user.uid)
-    .mergeMap(authId=>this.database.object(`/profiles/${user.uid}`)) //this returns authenticated user profile for that person  //Combining Observables with mergeMap. it is just a shoterway to get the authenticated userprofile
+    return this.authService.getAuthenticatedUser().map(user=> user.uid)
+    .mergeMap(authId=>this.database.object(`/profile/${authId}`)) //this returns authenticated user profile for that person  //Combining Observables with mergeMap. it is just a shoterway to get the authenticated userprofile
     .take(1)
-  }*/
+  }
 
+
+  setUserOnline(profile: Profile){
+    const ref=database().ref(`online-users/${profile.$key}`)
+
+    try{
+      ref.update({...profile});  //spread operator is ...
+      ref.onDisconnect().remove();
+    }
+    catch(e)
+    {
+      console.error(e);
+    }
+
+  }
+
+  getOnlineUsers(): FirebaseListObservable<Profile[]>{
+    console.log('inside of the data.service in getonlineUsers');
+    console.log(this.database.list (`online-users`));
+    return this.database.list (`online-users`);
+  }
 }

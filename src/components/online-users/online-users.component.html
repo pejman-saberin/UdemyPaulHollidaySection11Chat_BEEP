@@ -1,0 +1,10 @@
+<!-- Generated template for the OnlineUsersComponent component -->
+<ion-list>
+  <ion-item-divider>  Online Users  </ion-item-divider>
+  <ion-item *ngFor="let user of userList | async">
+    <ion-avatar item-left>
+       <img src="assets/img/avatar.png" alt=""/>
+    </ion-avatar>
+    <h2>{{user.firtName}} {{user.lasName}}</h2>
+  </ion-item>
+</ion-list>

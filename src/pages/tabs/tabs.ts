@@ -18,7 +18,7 @@ export class TabsPage {
  tab3Root:string;
 
  constructor(){
-   this.tab1Root= InboxPage; //alternative way of loading the page . This needs an import
+   this.tab1Root= 'InboxPage'; //alternative way of loading the page . This needs an import  (changing this to also lazy laading by making it a string)
    this.tab2Root='ChannelsPage';// when using lazy loading like this by passing things as strings the performance of our application increases. Becuase the channels gets loaded when the user asks for it
    this.tab3Root='ProfilePage';
 
